@@ -1,0 +1,2 @@
+spring.datasource.username=fixit_app
+spring.datasource.password=CAMBIA_ESTA_CONTRASENA
