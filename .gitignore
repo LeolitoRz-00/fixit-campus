@@ -24,3 +24,6 @@ __pycache__/
 
 # Fotos subidas en pruebas
 uploads/
+
+# Entorno del Python
+entorno/
