@@ -1,0 +1,233 @@
+[
+    {
+        "id": "FIX-0005",
+        "titulo": "Fuga de agua en el techo",
+        "espacio": "Lab-Redes",
+        "edificio": "Edificio A",
+        "asignacion": "Asignado",
+        "fecha_limite": "Hoy",
+        "estado": "EN CURSO",
+        "prioridad": "Urgente",
+        "categoria": "Fontanería y Sanitarios"
+    },
+    {
+        "id": "FIX-0004",
+        "titulo": "Proyector no enciende",
+        "espacio": "Aula B-12",
+        "edificio": "Edificio B",
+        "asignacion": "Sin asignar",
+        "fecha_limite": "Mañana",
+        "estado": "ABIERTA",
+        "prioridad": "Alta",
+        "categoria": "Sistemas Audiovisuales"
+    },
+    {
+        "id": "FIX-0003",
+        "titulo": "Enchufe no funciona",
+        "espacio": "Taller-Electrónica",
+        "edificio": "Edificio A",
+        "asignacion": "Sin asignar",
+        "fecha_limite": "En 3 días",
+        "estado": "ABIERTA",
+        "prioridad": "Media",
+        "categoria": "Electricidad"
+    },
+    {
+        "id": "FIX-0002",
+        "titulo": "Pintura deteriorada",
+        "espacio": "Pasillo Principal",
+        "edificio": "Edificio B",
+        "asignacion": "Asignado",
+        "fecha_limite": "Hoy",
+        "estado": "CERRADA",
+        "prioridad": "Baja",
+        "categoria": "Albañilería"
+    },
+    {
+        "id": "FIX-0001",
+        "titulo": "Persiana atascada",
+        "espacio": "Aula Magna",
+        "edificio": "Edificio Central",
+        "asignacion": "Asignado",
+        "fecha_limite": "Hoy",
+        "estado": "RESUELTA",
+        "prioridad": "Media",
+        "categoria": "Carpintería"
+    },
+    {
+        "id": "FIX-0006",
+        "titulo": "Switch principal caído",
+        "espacio": "Lab-ASIR",
+        "edificio": "Edificio A",
+        "asignacion": "Sin asignar",
+        "fecha_limite": "Hoy",
+        "estado": "ABIERTA",
+        "prioridad": "Urgente",
+        "categoria": "Redes y Conectividad"
+    },
+    {
+        "id": "FIX-0007",
+        "titulo": "Microscopios sin luz",
+        "espacio": "Lab-Análisis",
+        "edificio": "Edificio C",
+        "asignacion": "Asignado",
+        "fecha_limite": "Mañana",
+        "estado": "EN CURSO",
+        "prioridad": "Media",
+        "categoria": "Iluminación"
+    },
+    {
+        "id": "FIX-0008",
+        "titulo": "Contenedor biológico lleno sin recoger",
+        "espacio": "Taller-Enfermería",
+        "edificio": "Edificio C",
+        "asignacion": "Asignado",
+        "fecha_limite": "Hoy",
+        "estado": "EN CURSO",
+        "prioridad": "Alta",
+        "categoria": "Gestión de Residuos"
+    },
+    {
+        "id": "FIX-0009",
+        "titulo": "Cerradura del botiquín rota",
+        "espacio": "Almacén-Emergencias",
+        "edificio": "Edificio C",
+        "asignacion": "Sin asignar",
+        "fecha_limite": "Mañana",
+        "estado": "ABIERTA",
+        "prioridad": "Media",
+        "categoria": "Cerrajería"
+    },
+    {
+        "id": "FIX-0010",
+        "titulo": "Aire acondicionado gotea sobre el rack",
+        "espacio": "CPD",
+        "edificio": "Edificio A",
+        "asignacion": "Asignado",
+        "fecha_limite": "Hoy",
+        "estado": "EN CURSO",
+        "prioridad": "Urgente",
+        "categoria": "Climatización"
+    },
+    {
+        "id": "FIX-0011",
+        "titulo": "Rampa de camillas bloqueada",
+        "espacio": "Entrada Principal",
+        "edificio": "Edificio Central",
+        "asignacion": "Sin asignar",
+        "fecha_limite": "Hoy",
+        "estado": "ABIERTA",
+        "prioridad": "Alta",
+        "categoria": "Accesibilidad y Movilidad"
+    },
+    {
+        "id": "FIX-0012",
+        "titulo": "Equipos de alumnos con pantallazo azul",
+        "espacio": "Aula-DAM",
+        "edificio": "Edificio B",
+        "asignacion": "Asignado",
+        "fecha_limite": "En 3 días",
+        "estado": "ABIERTA",
+        "prioridad": "Alta",
+        "categoria": "Hardware"
+    },
+    {
+        "id": "FIX-0013",
+        "titulo": "Extintor de prácticas caducado",
+        "espacio": "Taller-RCP",
+        "edificio": "Edificio C",
+        "asignacion": "Sin asignar",
+        "fecha_limite": "Mañana",
+        "estado": "ABIERTA",
+        "prioridad": "Baja",
+        "categoria": "Sistemas de Emergencia"
+    },
+    {
+        "id": "FIX-0014",
+        "titulo": "Olor a gas cerca de los mecheros Bunsen",
+        "espacio": "Lab-Análisis",
+        "edificio": "Edificio C",
+        "asignacion": "Asignado",
+        "fecha_limite": "Hoy",
+        "estado": "RESUELTA",
+        "prioridad": "Urgente",
+        "categoria": "Sistemas de Emergencia"
+    },
+    {
+        "id": "FIX-0015",
+        "titulo": "Pila de lavado quirúrgico atascada",
+        "espacio": "Taller-Enfermería",
+        "edificio": "Edificio C",
+        "asignacion": "Sin asignar",
+        "fecha_limite": "En 3 días",
+        "estado": "ABIERTA",
+        "prioridad": "Media",
+        "categoria": "Fontanería y Sanitarios"
+    },
+    {
+        "id": "FIX-0016",
+        "titulo": "Cristal roto por portazo",
+        "espacio": "Biblioteca",
+        "edificio": "Edificio Central",
+        "asignacion": "Asignado",
+        "fecha_limite": "Mañana",
+        "estado": "EN CURSO",
+        "prioridad": "Media",
+        "categoria": "Carpintería"
+    },
+    {
+        "id": "FIX-0017",
+        "titulo": "Falta cobertura WiFi para portátiles",
+        "espacio": "Cafetería",
+        "edificio": "Edificio Central",
+        "asignacion": "Sin asignar",
+        "fecha_limite": "En 3 días",
+        "estado": "ABIERTA",
+        "prioridad": "Baja",
+        "categoria": "Redes y Conectividad"
+    },
+    {
+        "id": "FIX-0018",
+        "titulo": "Pizarra interactiva no calibra el toque",
+        "espacio": "Aula-DAW",
+        "edificio": "Edificio B",
+        "asignacion": "Asignado",
+        "fecha_limite": "Mañana",
+        "estado": "CERRADA",
+        "prioridad": "Media",
+        "categoria": "Sistemas Audiovisuales"
+    },
+    {
+        "id": "FIX-0019",
+        "titulo": "Ramas caídas bloquean el paso",
+        "espacio": "Jardín Central",
+        "edificio": "Edificio Central",
+        "asignacion": "Sin asignar",
+        "fecha_limite": "En 3 días",
+        "estado": "ABIERTA",
+        "prioridad": "Baja",
+        "categoria": "Zonas Verdes y Exteriores"
+    },
+    {
+        "id": "FIX-0020",
+        "titulo": "Luces parpadean (efecto estroboscópico)",
+        "espacio": "Pasillo-Emergencias",
+        "edificio": "Edificio C",
+        "asignacion": "Asignado",
+        "fecha_limite": "Mañana",
+        "estado": "ABIERTA",
+        "prioridad": "Media",
+        "categoria": "Iluminación"
+    },
+    {
+    "id": "FIX-0021",
+    "titulo": "Router de prácticas echando humo",
+    "espacio": "Lab-ASIR",
+    "edificio": "Edificio A",
+    "asignacion": "Sin asignar",
+    "fecha_limite": "Hoy",
+    "estado": "ABIERTA",
+    "prioridad": "Urgente",
+    "categoria": "Redes y Conectividad"
+}
+]
