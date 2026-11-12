@@ -1,4 +1,7 @@
+package com.fixitcampus.backend;
+
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class EstructuraCarpetas {
@@ -8,25 +11,46 @@ public class EstructuraCarpetas {
         //Lista de todas las carpetas necesarias
 
         List<String> rutasCarpetas = List.of(
-                "fixit-campus/backend/src",
-                "fixit-campus/backend/tests",
-                "fixit-campus/analytics/app",
-                "fixit-campus/analytics/tests",
-                "fixit-campus/web",
-                "fixit-campus/android-app",
-                "fixit-campus/facturacion",
-                "fixit-campus/database",
-                "fixit-campus/data",
-                "fixit-campus/design",
-                "fixit-campus/docs/api",
-                "fixit-campus/docs/english",
-                "fixit-campus/docs/digitalizacion",
-                "fixit-campus/docs/ipe",
-                "fixit-campus/docs/sostenibilidad"
+                "backend/src/main/java",
+                "backend/src/main/resources",
+                "backend/src/test/java",
+                "analytics/data",
+                "web",
+                "android-app",
+                "facturacion",
+                "database",
+                "data",
+                "design",
+                "docs/api",
+                "docs/english",
+                "docs/digitalizacion",
+                "docs/ipe",
+                "docs/sostenibilidad"
         );
 
         //Se crean las carpetas de todas las rutas que se han definido en la lista de arriba
 
-        rutasCarpetas.forEach(ruta -> new File(ruta).mkdirs());
+        // Obtenemos la raíz del proyecto (si se ejecuta desde /backend, subimos un nivel)
+        File directorioActual = new File("").getAbsoluteFile();
+        File raizProyecto = directorioActual.getName().equalsIgnoreCase("backend")
+                ? directorioActual.getParentFile()
+                : directorioActual;
+
+        for (String ruta : rutasCarpetas) {
+            File carpeta = new File(raizProyecto, ruta);
+            if (!carpeta.exists()) {
+                carpeta.mkdirs();
+            }
+            // Si la carpeta está vacía, creamos un archivo .gitkeep
+            File gitkeep = new File(carpeta, ".gitkeep");
+            if (!gitkeep.exists() && carpeta.list() != null && carpeta.list().length == 0) {
+                try {
+                    gitkeep.createNewFile();
+                } catch (IOException e) {
+                    System.err.println("No se pudo crear .gitkeep en: " + ruta);
+                }
+            }
+        }
+        System.out.println("Estructura de carpetas verificada/creada correctamente en: " + raizProyecto.getAbsolutePath());
     }
 }
