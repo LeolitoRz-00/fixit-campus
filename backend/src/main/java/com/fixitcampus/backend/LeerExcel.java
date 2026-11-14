@@ -13,7 +13,7 @@ public class LeerExcel {
 
     public static void leerExcel() throws IOException {
 
-        try (FileInputStream archivo = new FileInputStream("proveedores.xlsx"); XSSFWorkbook libro =
+        try (FileInputStream archivo = new FileInputStream("data/BBDD.xlsx"); XSSFWorkbook libro =
                 new XSSFWorkbook(archivo);){
 
 
@@ -31,7 +31,8 @@ public class LeerExcel {
                 String especialidad = fila.getCell(2).getStringCellValue();
                 String contacto = fila.getCell(3).getStringCellValue();
                 double precio_hora = fila.getCell(4).getNumericCellValue();
-                lst.add(new Proveedor(nif, razon_social, especialidad, contacto, precio_hora));
+                String activo = fila.getCell(5).getStringCellValue();
+                lst.add(new Proveedor(nif, razon_social, especialidad, contacto, precio_hora, activo));
 
             }
 
