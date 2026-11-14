@@ -21,10 +21,10 @@ public class Comentario {
 
     @Override
     public String toString() {
-        return "Comentario{" +
+        return "\nComentario{" +
                 "id_incidencia=" + id_incidencia +
                 ", id_autor=" + id_autor +
-                ", texto='" + texto + '\'' +
+                ", texto='" + texto +
                 ", fecha=" + fecha +
                 '}';
     }

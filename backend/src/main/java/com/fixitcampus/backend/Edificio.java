@@ -11,8 +11,8 @@ public class Edificio {
 
     @Override
     public String toString() {
-        return "Edificio{" +
-                "nombre='" + nombre + '\'' +
+        return "\nEdificio{" +
+                "nombre='" + nombre +
                 '}';
     }
 }

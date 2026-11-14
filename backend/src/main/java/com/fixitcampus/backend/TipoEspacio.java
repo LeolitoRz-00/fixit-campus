@@ -11,8 +11,8 @@ public class TipoEspacio {
 
     @Override
     public String toString() {
-        return "Tipo Espacio{" +
-                "nombre='" + nombre + '\'' +
+        return "\nTipo Espacio{" +
+                "nombre='" + nombre +
                 '}';
     }
 }

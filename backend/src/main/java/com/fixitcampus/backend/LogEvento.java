@@ -23,11 +23,11 @@ public class LogEvento {
 
     @Override
     public String toString() {
-        return "LogEvento{" +
+        return "\nLogEvento{" +
                 ", id_usuario=" + id_usuario +
-                ", accion='" + accion + '\'' +
-                ", entidad='" + entidad + '\'' +
-                ", detalle='" + detalle + '\'' +
+                ", accion='" + accion +
+                ", entidad='" + entidad +
+                ", detalle='" + detalle +
                 ", fecha=" + fecha +
                 '}';
     }

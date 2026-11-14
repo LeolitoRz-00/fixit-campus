@@ -22,13 +22,13 @@ public class Proveedor {
 
     @Override
     public String toString() {
-        return "Proveedor{" +
-                "nif='" + nif + '\'' +
+        return "\nProveedor{" +
+                "nif='" + nif +
                 ", razon_social=" + razon_social +
                 ", especialidad=" + especialidad +
                 ", contacto=" + contacto +
                 ", precio_hora=" + precio_hora +
-                ", activo='" + activo + '\'' +
+                ", activo='" + activo +
                 '}';
     }
 }

@@ -13,8 +13,8 @@ public class Estado {
 
     @Override
     public String toString() {
-        return "Estado{" +
-                "nombre='" + nombre + '\'' +
+        return "\nEstado{" +
+                "nombre='" + nombre +
                 ", orden=" + orden +
                 '}';
     }

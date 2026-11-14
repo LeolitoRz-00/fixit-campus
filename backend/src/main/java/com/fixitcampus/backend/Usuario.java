@@ -23,13 +23,13 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" +
-                "id_rol=" + id_rol + '\'' +
+        return "\nUsuario{" +
+                "id_rol=" + id_rol +
                 "nombre='" + nombre +
                 "email='" + email +
                 "pass_hash='" + pass_hash +
                 "pass_salt='" + pass_salt +
-                "activo='" + activo + '\'' +
+                "activo='" + activo +
                 '}';
     }
 }

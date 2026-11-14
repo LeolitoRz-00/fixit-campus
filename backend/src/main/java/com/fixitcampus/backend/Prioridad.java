@@ -13,8 +13,8 @@ public class Prioridad {
 
     @Override
     public String toString() {
-        return "Prioridad{" +
-                "nombre='" + nombre + '\'' +
+        return "\nPrioridad{" +
+                "nombre='" + nombre +
                 "plazo_laborables=" + plazo_dias_laborables +
                 '}';
     }
