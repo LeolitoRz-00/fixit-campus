@@ -55,7 +55,7 @@ public class Incidencia {
 
     @Override
     public String toString() {
-        return "Incidencia{" +
+        return "\nIncidencia{" +
                 "codigo=" + codigo +
                 ", id_creador=" + id_creador +
                 ", id_espacio=" + id_espacio +
@@ -64,14 +64,14 @@ public class Incidencia {
                 ", id_estado=" + id_estado +
                 ", id_tecnico=" + id_tecnico +
                 ", id_proveedor=" + id_proveedor +
-                ", descripcion='" + descripcion + '\'' +
-                ", imagen='" + imagen + '\'' +
-                ", riesgo_personas='" + riesgo_personas + '\'' +
-                ", impide_uso='" + impide_uso + '\'' +
+                ", \ndescripcion='" + descripcion +
+                ", imagen='" + imagen +
+                ", riesgo_personas='" + riesgo_personas +
+                ", impide_uso='" + impide_uso +
                 ", fecha_creacion=" + fecha_creacion +
                 ", fecha_objetivo=" + fecha_objetivo +
                 ", fecha_resolucion=" + fecha_resolucion +
-                ", facturada='" + facturada + '\'' +
+                ", facturada='" + facturada +
                 ", version=" + version +
                 '}';
     }

@@ -11,8 +11,8 @@ public class Rol {
 
     @Override
     public String toString() {
-        return "Rol{" +
-                "nombre='" + nombre + '\'' +
+        return "\nRol{" +
+                "nombre='" + nombre + 
                 '}';
     }
 }

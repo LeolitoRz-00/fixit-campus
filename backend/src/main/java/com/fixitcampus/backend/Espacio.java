@@ -21,12 +21,12 @@ public class Espacio {
 
     @Override
     public String toString() {
-        return "Espacio{" +
-                "id_edificio=" + id_edificio + '\'' +
+        return "\nEspacio{" +
+                "id_edificio=" + id_edificio +
                 ", id_tipo_espacio=" + id_tipo_espacio +
                 ", planta=" + planta +
                 "nombre='" + nombre +
-                "activo='" + activo + '\'' +
+                "activo='" + activo +
                 '}';
     }
 }

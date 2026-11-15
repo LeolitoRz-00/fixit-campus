@@ -26,12 +26,12 @@ public class HistorialCambio {
 
     @Override
     public String toString() {
-        return "Historial Cambio{" +
+        return "\nHistorial Cambio{" +
                 "id_incidencia=" + id_incidencia +
                 ", id_usuario=" + id_usuario +
-                ", tipo='" + tipo + '\'' +
-                ", valor_anterior='" + valor_anterior + '\'' +
-                ", valor_nuevo='" + valor_nuevo + '\'' +
+                ", tipo='" + tipo +
+                ", valor_anterior='" + valor_anterior +
+                ", valor_nuevo='" + valor_nuevo +
                 ", fecha=" + fecha +
                 '}';
     }
