@@ -1,0 +1,21 @@
+package com.fixitcampus.backend;
+
+public class Prioridad {
+
+    String nombre;
+    int plazo_dias_laborables;
+
+    public Prioridad(String nombre,  int plazo_dias_laborables) {
+
+        this.nombre = nombre;
+        this.plazo_dias_laborables = plazo_dias_laborables;
+    }
+
+    @Override
+    public String toString() {
+        return "Prioridad{" +
+                "nombre='" + nombre + '\'' +
+                "plazo_laborables=" + plazo_dias_laborables +
+                '}';
+    }
+}

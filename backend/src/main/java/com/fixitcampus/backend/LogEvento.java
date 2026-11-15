@@ -1,0 +1,34 @@
+package com.fixitcampus.backend;
+
+import java.time.LocalDateTime;
+
+public class LogEvento {
+
+
+    int id_usuario;
+    String accion;
+    String entidad;
+    String detalle;
+    LocalDateTime fecha;
+
+    public LogEvento(int id_usuario, String accion, String entidad, String detalle, LocalDateTime fecha) {
+
+        this.id_usuario = id_usuario;
+        this.accion = accion;
+        this.entidad = entidad;
+        this.detalle = detalle;
+        this.fecha = fecha;
+
+    }
+
+    @Override
+    public String toString() {
+        return "LogEvento{" +
+                ", id_usuario=" + id_usuario +
+                ", accion='" + accion + '\'' +
+                ", entidad='" + entidad + '\'' +
+                ", detalle='" + detalle + '\'' +
+                ", fecha=" + fecha +
+                '}';
+    }
+}

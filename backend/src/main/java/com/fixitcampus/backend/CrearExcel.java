@@ -58,7 +58,7 @@ public class CrearExcel {
             }
 
             //Escribimos el archivo excel para crearlo
-            try (FileOutputStream archivo = new FileOutputStream("BBDD.xlsx")) {
+            try (FileOutputStream archivo = new FileOutputStream("data/BBDD.xlsx")) {
                 libro.write(archivo);
                 System.out.println("Archivo Excel 'BBDD.xlsx' creado con éxito.");
             }
