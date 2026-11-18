@@ -15,4 +15,8 @@ public class Categoria {
                 "nombre='" + nombre +
                 '}';
     }
+
+    public String getNombre() {
+        return nombre;
+    }
 }

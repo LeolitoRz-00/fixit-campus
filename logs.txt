@@ -1,0 +1,2 @@
+LogMessage -> [INCIDENCIA] Proyector roto en aula 3 (1794852306908)
+LogMessage -> [FACTURA] Factura de fontanería registrada (1794852306908)

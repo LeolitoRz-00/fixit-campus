@@ -7,10 +7,9 @@ public class Proveedor {
     String especialidad;
     String contacto;
     double precio_hora;
-    //Vas a ser un boolean, pero de momento no porque me das problemas
-    String activo;
+    boolean activo;
 
-    public Proveedor(String nif, String razon_social, String especialidad, String contacto, double precio_hora, String activo) {
+    public Proveedor(String nif, String razon_social, String especialidad, String contacto, double precio_hora, boolean activo) {
 
         this.nif = nif;
         this.razon_social = razon_social;
@@ -30,5 +29,29 @@ public class Proveedor {
                 ", precio_hora=" + precio_hora +
                 ", activo='" + activo +
                 '}';
+    }
+
+    public String getNif() {
+        return nif;
+    }
+
+    public String getRazon_social() {
+        return razon_social;
+    }
+
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public String getContacto() {
+        return contacto;
+    }
+
+    public double getPrecio_hora() {
+        return precio_hora;
+    }
+
+    public boolean isActivo() {
+        return activo;
     }
 }

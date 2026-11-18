@@ -15,4 +15,8 @@ public class TipoEspacio {
                 "nombre='" + nombre +
                 '}';
     }
+
+    public String getNombre() {
+        return nombre;
+    }
 }

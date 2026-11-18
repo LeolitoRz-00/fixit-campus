@@ -18,4 +18,12 @@ public class Estado {
                 ", orden=" + orden +
                 '}';
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getOrden() {
+        return orden;
+    }
 }

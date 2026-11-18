@@ -7,10 +7,9 @@ public class Usuario {
     String email;
     String pass_hash;
     String pass_salt;
-    //Tu eres un booleano, pero de momento no
-    String activo;
+    boolean activo;
 
-    public Usuario(int id_rol, String nombre, String email, String pass_hash, String pass_salt, String activo) {
+    public Usuario(int id_rol, String nombre, String email, String pass_hash, String pass_salt, boolean activo) {
 
         this.id_rol = id_rol;
         this.nombre = nombre;
@@ -32,4 +31,30 @@ public class Usuario {
                 "activo='" + activo +
                 '}';
     }
+
+    public int getIdRol() {
+        return id_rol;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPasswordHash() {
+        return pass_hash;
+    }
+
+    public String getPass_salt() {
+        return pass_salt;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+
 }

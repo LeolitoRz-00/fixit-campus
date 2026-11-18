@@ -18,4 +18,12 @@ public class Prioridad {
                 "plazo_laborables=" + plazo_dias_laborables +
                 '}';
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getPlazo_dias_laborables() {
+        return plazo_dias_laborables;
+    }
 }

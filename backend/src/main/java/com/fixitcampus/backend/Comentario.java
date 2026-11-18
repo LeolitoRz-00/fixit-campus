@@ -28,4 +28,20 @@ public class Comentario {
                 ", fecha=" + fecha +
                 '}';
     }
+
+    public int getId_incidencia() {
+        return id_incidencia;
+    }
+
+    public int getId_autor() {
+        return id_autor;
+    }
+
+    public String getTexto() {
+        return texto;
+    }
+
+    public LocalDateTime getFecha() {
+        return fecha;
+    }
 }

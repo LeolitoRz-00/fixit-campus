@@ -35,4 +35,28 @@ public class HistorialCambio {
                 ", fecha=" + fecha +
                 '}';
     }
+
+    public int getId_incidencia() {
+        return id_incidencia;
+    }
+
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public String getValor_anterior() {
+        return valor_anterior;
+    }
+
+    public String getValor_nuevo() {
+        return valor_nuevo;
+    }
+
+    public LocalDateTime getFecha() {
+        return fecha;
+    }
 }

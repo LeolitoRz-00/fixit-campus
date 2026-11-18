@@ -6,10 +6,9 @@ public class Espacio {
     int id_tipo_espacio;
     int planta;
     String nombre;
-    //Tu eres un booleano, pero de momento no
-    String activo;
+    boolean activo;
 
-    public Espacio(int id_edificio, int id_tipo_espacio, int planta, String nombre, String activo) {
+    public Espacio(int id_edificio, int id_tipo_espacio, int planta, String nombre, boolean activo) {
 
         this.id_edificio = id_edificio;
         this.id_tipo_espacio = id_tipo_espacio;
@@ -28,5 +27,25 @@ public class Espacio {
                 "nombre='" + nombre +
                 "activo='" + activo +
                 '}';
+    }
+
+    public int getId_edificio() {
+        return id_edificio;
+    }
+
+    public int getId_tipo_espacio() {
+        return id_tipo_espacio;
+    }
+
+    public int getPlanta() {
+        return planta;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public boolean isActivo() {
+        return activo;
     }
 }

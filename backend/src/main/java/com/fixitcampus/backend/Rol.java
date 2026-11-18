@@ -15,4 +15,8 @@ public class Rol {
                 "nombre='" + nombre + 
                 '}';
     }
+
+    public String getNombre() {
+        return nombre;
+    }
 }

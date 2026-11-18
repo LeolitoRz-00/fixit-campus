@@ -15,4 +15,8 @@ public class Edificio {
                 "nombre='" + nombre +
                 '}';
     }
+
+    public String getNombre() {
+        return nombre;
+    }
 }

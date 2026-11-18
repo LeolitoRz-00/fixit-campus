@@ -1,7 +1,5 @@
 package com.fixitcampus.backend;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -18,20 +16,20 @@ public class Incidencia {
     String descripcion;
     String imagen;
     //Tu vas a ser un boolean, pero de momento no
-    String riesgo_personas;
+    boolean riesgo_personas;
     //Tu vas a ser un boolean, pero de momento no
-    String impide_uso;
+    boolean impide_uso;
     LocalDateTime fecha_creacion;
     LocalDate fecha_objetivo;
     LocalDateTime fecha_resolucion;
     //Tu vas a ser un boolean, pero de momento no
-    String facturada;
+    boolean facturada;
     int version;
 
     public Incidencia(String codigo, int id_creador, int id_espacio, int id_categoria, int id_prioridad, int id_estado,
-                      Integer id_tecnico, Integer id_proveedor, String descripcion, String imagen, String riesgo_personas,
-                      String impide_uso, LocalDateTime fecha_creacion, LocalDate fecha_objetivo,
-                      LocalDateTime fecha_resolucion, String facturada, int version) {
+                      Integer id_tecnico, Integer id_proveedor, String descripcion, String imagen, boolean riesgo_personas,
+                      boolean impide_uso, LocalDateTime fecha_creacion, LocalDate fecha_objetivo,
+                      LocalDateTime fecha_resolucion, boolean facturada, int version) {
 
         this.codigo = codigo;
         this.id_creador = id_creador;
@@ -74,5 +72,73 @@ public class Incidencia {
                 ", facturada='" + facturada +
                 ", version=" + version +
                 '}';
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public int getId_creador() {
+        return id_creador;
+    }
+
+    public int getId_espacio() {
+        return id_espacio;
+    }
+
+    public int getId_categoria() {
+        return id_categoria;
+    }
+
+    public int getId_prioridad() {
+        return id_prioridad;
+    }
+
+    public int getId_estado() {
+        return id_estado;
+    }
+
+    public Integer getId_tecnico() {
+        return id_tecnico;
+    }
+
+    public Integer getId_proveedor() {
+        return id_proveedor;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public boolean isRiesgo_personas() {
+        return riesgo_personas;
+    }
+
+    public boolean isImpide_uso() {
+        return impide_uso;
+    }
+
+    public LocalDateTime getFecha_creacion() {
+        return fecha_creacion;
+    }
+
+    public LocalDate getFecha_objetivo() {
+        return fecha_objetivo;
+    }
+
+    public LocalDateTime getFecha_resolucion() {
+        return fecha_resolucion;
+    }
+
+    public boolean isFacturada() {
+        return facturada;
+    }
+
+    public int getVersion() {
+        return version;
     }
 }

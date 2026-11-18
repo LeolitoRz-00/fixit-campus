@@ -1,6 +1,6 @@
 package com.fixitcampus.backend.logger;
 
-import model.LogMessage;
+import com.fixitcampus.backend.model.LogMessage;
 
 import java.io.FileWriter;
 import java.io.IOException;

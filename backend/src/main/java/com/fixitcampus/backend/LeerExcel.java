@@ -1,5 +1,7 @@
 package com.fixitcampus.backend;
 
+import com.fixitcampus.backend.conexion.ImportadorBBDD;
+import com.fixitcampus.backend.logger.ColaLogs;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.cglib.core.Local;
@@ -11,6 +13,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
+
 
 
 public class LeerExcel {
@@ -90,7 +93,7 @@ public class LeerExcel {
                 String email = leerTexto(fila, 2);
                 String pass_hash = leerTexto(fila, 3);
                 String pass_salt = leerTexto(fila, 4);
-                String activo = leerTexto(fila, 5);
+                boolean activo = leerBoolean(fila, 5);
                 return new Usuario(id_rol, nombre, email, pass_hash, pass_salt, activo);
             });
 
@@ -100,7 +103,7 @@ public class LeerExcel {
                 int id_tipo_espacio = leerInt(fila, 1);
                 int planta = leerInt(fila, 2);
                 String nombre = leerTexto(fila, 3);
-                String activo = leerTexto(fila, 4);
+                boolean activo = leerBoolean(fila, 4);
                 return new Espacio(id_edificio, id_tipo_espacio, planta, nombre, activo);
             });
 
@@ -111,7 +114,7 @@ public class LeerExcel {
                 String especialidad = leerTexto(fila, 2);
                 String contacto = leerTexto(fila, 3);
                 double precioHora = leerDouble(fila, 4);
-                String activo = leerTexto(fila, 5);
+                boolean activo = leerBoolean(fila, 5);
                 return new Proveedor(nif, razonSocial, especialidad, contacto, precioHora, activo);
             });
 
@@ -128,14 +131,14 @@ public class LeerExcel {
                 int id_proveedor = leerInt(fila, 7);
                 String descripcion = leerTexto(fila, 8);
                 String imagen = leerTexto(fila, 9);
-                //Esto son 2 boolean
-                String riesgo_personas = leerTexto(fila, 10);
-                String impide_uso = leerTexto(fila, 11);
-                LocalDateTime fecha_creacion = fila.getCell(12).getLocalDateTimeCellValue();
-                LocalDate fecha_objetivo = fila.getCell(13).getLocalDateTimeCellValue().toLocalDate();
-                LocalDateTime fecha_resolucion = fila.getCell(14).getLocalDateTimeCellValue();
-                //Esto es otro boolean
-                String facturada = leerTexto(fila, 15);
+
+                boolean riesgo_personas = leerBoolean(fila, 10);
+                boolean impide_uso = leerBoolean(fila, 11);
+                LocalDateTime fecha_creacion = leerFecha(fila,12);
+                LocalDate fecha_objetivo = leerFecha(fila,13).toLocalDate();
+                LocalDateTime fecha_resolucion = leerFecha(fila,14);
+
+                boolean facturada = leerBoolean(fila, 15);
                 int version = leerInt(fila, 16);
                 return new Incidencia(codigo, id_creador, id_espacio, id_categoria, id_prioridad, id_estado, id_tecnico,
                         id_proveedor, descripcion, imagen, riesgo_personas, impide_uso, fecha_creacion,
@@ -147,7 +150,7 @@ public class LeerExcel {
                 int id_incidencia = leerInt(fila, 0);
                 int id_autor = leerInt(fila, 1);
                 String texto = leerTexto(fila, 2);
-                LocalDateTime fecha = fila.getCell(3).getLocalDateTimeCellValue();
+                LocalDateTime fecha = leerFecha(fila, 3);
                 return new Comentario(id_incidencia, id_autor, texto, fecha);
             });
 
@@ -158,7 +161,7 @@ public class LeerExcel {
                 String tipo =  leerTexto(fila, 2);
                 String valor_anterior = leerTexto(fila, 3);
                 String valor_nuevo = leerTexto(fila, 4);
-                LocalDateTime fecha =  fila.getCell(5).getLocalDateTimeCellValue();
+                LocalDateTime fecha = leerFecha(fila, 5);
                 return new HistorialCambio(id_incidencia, id_usuario, tipo, valor_anterior, valor_nuevo, fecha);
             });
 
@@ -168,23 +171,41 @@ public class LeerExcel {
                 String accion = leerTexto(fila, 1);
                 String entidad = leerTexto(fila, 2);
                 String detalle = leerTexto(fila, 3);
-                LocalDateTime fecha = fila.getCell(4).getLocalDateTimeCellValue();
+                LocalDateTime fecha = leerFecha(fila, 4);
                 return new LogEvento(id_usuario, accion, entidad, detalle, fecha);
             });
 
-            System.out.println("Roles: " + roles);
-            System.out.println("Estados: " + estados);
-            System.out.println("Prioridades: " + prioridades);
-            System.out.println("Categorias: " + categorias);
-            System.out.println("Tipo Espacio: " + tipo_espacios);
-            System.out.println("Edificios: " + edificios);
-            System.out.println("Usuarios: " + usuarios);
-            System.out.println("Espacios: " + espacios);
-            System.out.println("Proveedores: " + proveedores);
-            System.out.println("Incidencias: " + incidencias);
-            System.out.println("Comentarios: " + comentarios);
-            System.out.println("Historial cambios: " + historiales);
-            System.out.println("Logs: " + logs);
+//            System.out.println("Roles: " + roles);
+//            System.out.println("Estados: " + estados);
+//            System.out.println("Prioridades: " + prioridades);
+//            System.out.println("Categorias: " + categorias);
+//            System.out.println("Tipo Espacio: " + tipo_espacios);
+//            System.out.println("Edificios: " + edificios);
+//            System.out.println("Usuarios: " + usuarios);
+//            System.out.println("Espacios: " + espacios);
+//            System.out.println("Proveedores: " + proveedores);
+//            System.out.println("Incidencias: " + incidencias);
+//            System.out.println("Comentarios: " + comentarios);
+//            System.out.println("Historial cambios: " + historiales);
+//            System.out.println("Logs: " + logs);
+
+            ColaLogs colaLogs = new ColaLogs();
+
+            ImportadorBBDD.importarDatos(
+                    roles,
+                    estados,
+                    prioridades,
+                    categorias,
+                    tipo_espacios,
+                    edificios,
+                    usuarios,
+                    espacios,
+                    proveedores,
+                    incidencias,
+                    comentarios,
+                    historiales,
+                    logs,
+                    colaLogs);
 
 
         }catch (Exception e){
@@ -233,6 +254,25 @@ public class LeerExcel {
         return Integer.parseInt(formatter.formatCellValue(celda).trim());
     }
 
+    public static boolean leerBoolean(Row fila, int columna) {
+        if (fila == null) return false;
+        Cell celda = fila.getCell(columna);
+        if (celda == null) return false;
+        DataFormatter formatter = new DataFormatter();
+        String valor = formatter.formatCellValue(celda).trim().toLowerCase();
+        // Solo aceptamos "true" o "false"
+        if (valor.equals("true")) {
+            return true;
+        } else if (valor.equals("false")) {
+            return false;
+        } else {
+            // ¡AQUÍ FORZAMOS EL ERROR!
+            throw new IllegalArgumentException(
+                    "Error de formato booleano en la columna " + columna + ": Se encontró '" + valor + "' pero solo se admite 'true' o 'false'."
+            );
+        }
+    }
+
     //Esto me lo ha dado la IA
     public static LocalDateTime leerFecha(Row fila, int columna) {
         if (fila == null) return null;
@@ -247,5 +287,7 @@ public class LeerExcel {
         }
         return null;
     }
+
+
 
 }
