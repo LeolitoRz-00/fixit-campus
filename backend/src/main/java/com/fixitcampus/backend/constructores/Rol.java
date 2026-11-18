@@ -1,18 +1,18 @@
-package com.fixitcampus.backend;
+package com.fixitcampus.backend.constructores;
 
-public class TipoEspacio {
+public class Rol {
 
     String nombre;
 
-    public TipoEspacio(String nombre) {
+    public Rol(String nombre) {
 
         this.nombre = nombre;
     }
 
     @Override
     public String toString() {
-        return "\nTipo Espacio{" +
-                "nombre='" + nombre +
+        return "\nRol{" +
+                "nombre='" + nombre + 
                 '}';
     }
 

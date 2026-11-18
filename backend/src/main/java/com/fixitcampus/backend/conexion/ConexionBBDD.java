@@ -18,16 +18,16 @@ public class ConexionBBDD {
         Properties props = new Properties();
 
         // 1. Intentar cargar desde el classpath (src/main/resources) o desde la raíz del proyecto
-        try (InputStream input = ConexionBBDD.class.getClassLoader().getResourceAsStream("application-local.properties")) {
+        try (InputStream input = ConexionBBDD.class.getClassLoader().getResourceAsStream("application.properties")) {
             if (input != null) {
                 props.load(input);
             } else {
-                try (FileInputStream fileInput = new FileInputStream("application-local.properties")) {
+                try (FileInputStream fileInput = new FileInputStream("application.properties")) {
                     props.load(fileInput);
                 }
             }
         } catch (IOException e) {
-            System.err.println("Aviso: No se encontró application-local.properties, se usarán variables de entorno.");
+            System.err.println("Aviso: No se encontró application.properties, se usarán variables de entorno.");
         }
 
         // 2. Priorizar variables de entorno; si no existen, usar el valor del fichero .properties

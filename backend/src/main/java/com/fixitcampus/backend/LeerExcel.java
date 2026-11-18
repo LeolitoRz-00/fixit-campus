@@ -1,10 +1,10 @@
 package com.fixitcampus.backend;
 
 import com.fixitcampus.backend.conexion.ImportadorBBDD;
+import com.fixitcampus.backend.constructores.*;
 import com.fixitcampus.backend.logger.ColaLogs;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.cglib.core.Local;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -43,10 +43,10 @@ public class LeerExcel {
         return lista;
     }
 
-    public static void leerExcel() throws IOException {
+    public static void leerExcel(ColaLogs cola) throws IOException {
 
         try (FileInputStream archivo = new FileInputStream("data/BBDD.xlsx"); XSSFWorkbook libro =
-                new XSSFWorkbook(archivo);){
+                new XSSFWorkbook(archivo);) {
 
             //Leemos la hoja de roles
             List<Rol> roles = leerHoja(libro, "rol", fila -> {
@@ -62,26 +62,26 @@ public class LeerExcel {
             });
 
             //Leemos la hoja de prioridad
-            List<Prioridad> prioridades = leerHoja(libro, "prioridad", fila ->{
+            List<Prioridad> prioridades = leerHoja(libro, "prioridad", fila -> {
                 String nombre = leerTexto(fila, 0);
                 int plazo_dias_laborables = leerInt(fila, 1);
                 return new Prioridad(nombre, plazo_dias_laborables);
             });
 
             //Leemos la hoja de categoria
-            List<Categoria> categorias = leerHoja(libro, "categoria" , fila -> {
+            List<Categoria> categorias = leerHoja(libro, "categoria", fila -> {
                 String nombre = leerTexto(fila, 0);
                 return new Categoria(nombre);
             });
 
             //Leemos la hoja de categoria
-            List<TipoEspacio> tipo_espacios = leerHoja(libro, "tipo_espacio" , fila -> {
+            List<TipoEspacio> tipo_espacios = leerHoja(libro, "tipo_espacio", fila -> {
                 String nombre = leerTexto(fila, 0);
                 return new TipoEspacio(nombre);
             });
 
             //Leemos la hoja de categoria
-            List<Edificio> edificios = leerHoja(libro, "edificio" , fila -> {
+            List<Edificio> edificios = leerHoja(libro, "edificio", fila -> {
                 String nombre = leerTexto(fila, 0);
                 return new Edificio(nombre);
             });
@@ -119,7 +119,7 @@ public class LeerExcel {
             });
 
             //Leemos la hoja de incidencias
-            List<Incidencia> incidencias = leerHoja(libro, "incidencia", fila ->{
+            List<Incidencia> incidencias = leerHoja(libro, "incidencia", fila -> {
 
                 String codigo = leerTexto(fila, 0);
                 int id_creador = leerInt(fila, 1);
@@ -127,16 +127,16 @@ public class LeerExcel {
                 int id_categoria = leerInt(fila, 3);
                 int id_prioridad = leerInt(fila, 4);
                 int id_estado = leerInt(fila, 5);
-                int id_tecnico = leerInt(fila, 6);
-                int id_proveedor = leerInt(fila, 7);
+                Integer id_tecnico = leerInteger(fila, 6);
+                Integer id_proveedor = leerInteger(fila, 7);
                 String descripcion = leerTexto(fila, 8);
                 String imagen = leerTexto(fila, 9);
 
                 boolean riesgo_personas = leerBoolean(fila, 10);
                 boolean impide_uso = leerBoolean(fila, 11);
-                LocalDateTime fecha_creacion = leerFecha(fila,12);
-                LocalDate fecha_objetivo = leerFecha(fila,13).toLocalDate();
-                LocalDateTime fecha_resolucion = leerFecha(fila,14);
+                LocalDateTime fecha_creacion = leerFecha(fila, 12);
+                LocalDate fecha_objetivo = leerFecha(fila, 13).toLocalDate();
+                LocalDateTime fecha_resolucion = leerFecha(fila, 14);
 
                 boolean facturada = leerBoolean(fila, 15);
                 int version = leerInt(fila, 16);
@@ -158,7 +158,7 @@ public class LeerExcel {
             List<HistorialCambio> historiales = leerHoja(libro, "historial_cambio", fila -> {
                 int id_incidencia = leerInt(fila, 0);
                 int id_usuario = leerInt(fila, 1);
-                String tipo =  leerTexto(fila, 2);
+                String tipo = leerTexto(fila, 2);
                 String valor_anterior = leerTexto(fila, 3);
                 String valor_nuevo = leerTexto(fila, 4);
                 LocalDateTime fecha = leerFecha(fila, 5);
@@ -175,22 +175,8 @@ public class LeerExcel {
                 return new LogEvento(id_usuario, accion, entidad, detalle, fecha);
             });
 
-//            System.out.println("Roles: " + roles);
-//            System.out.println("Estados: " + estados);
-//            System.out.println("Prioridades: " + prioridades);
-//            System.out.println("Categorias: " + categorias);
-//            System.out.println("Tipo Espacio: " + tipo_espacios);
-//            System.out.println("Edificios: " + edificios);
-//            System.out.println("Usuarios: " + usuarios);
-//            System.out.println("Espacios: " + espacios);
-//            System.out.println("Proveedores: " + proveedores);
-//            System.out.println("Incidencias: " + incidencias);
-//            System.out.println("Comentarios: " + comentarios);
-//            System.out.println("Historial cambios: " + historiales);
-//            System.out.println("Logs: " + logs);
 
-            ColaLogs colaLogs = new ColaLogs();
-
+            ColaLogs colaLogs = null;
             ImportadorBBDD.importarDatos(
                     roles,
                     estados,
@@ -205,7 +191,9 @@ public class LeerExcel {
                     comentarios,
                     historiales,
                     logs,
-                    colaLogs);
+                    cola);
+
+            colaLogs = new ColaLogs();
 
 
         }catch (Exception e){
@@ -238,8 +226,18 @@ public class LeerExcel {
         Cell celda = fila.getCell(columna);
         if (celda == null) return 0.0;
 
+        // Si la celda es numérica directa en Excel, la leemos nativamente:
+        if (celda.getCellType() == CellType.NUMERIC) {
+            return celda.getNumericCellValue();
+        }
+
         DataFormatter formatter = new DataFormatter();
-        return Double.parseDouble(formatter.formatCellValue(celda).trim());
+        String valor = formatter.formatCellValue(celda).trim();
+        if (valor.isEmpty()) return 0.0;
+
+        // Reemplazamos la coma por un punto antes de parsear:
+        valor = valor.replace(",", ".");
+        return Double.parseDouble(valor);
     }
 
     public static int leerInt(Row fila, int columna) {
@@ -271,6 +269,18 @@ public class LeerExcel {
                     "Error de formato booleano en la columna " + columna + ": Se encontró '" + valor + "' pero solo se admite 'true' o 'false'."
             );
         }
+    }
+
+    public static Integer leerInteger(Row fila, int columna) {
+        if (fila == null) return null;
+        Cell celda = fila.getCell(columna);
+        if (celda == null) return null;
+
+        DataFormatter formatter = new DataFormatter();
+        String valor = formatter.formatCellValue(celda).trim();
+        if (valor.isEmpty() || valor.equals("0")) return null;
+
+        return Integer.parseInt(valor);
     }
 
     //Esto me lo ha dado la IA

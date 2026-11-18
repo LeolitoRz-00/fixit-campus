@@ -1,6 +1,7 @@
 package com.fixitcampus.backend.conexion;
 
 import com.fixitcampus.backend.*;
+import com.fixitcampus.backend.constructores.*;
 import com.fixitcampus.backend.logger.ColaLogs;
 import com.fixitcampus.backend.model.LogMessage;
 import com.fixitcampus.backend.model.TipoEvento;
@@ -111,7 +112,7 @@ public class ImportadorBBDD {
                 stmt.executeBatch();
             }
             // 8. INSERTAR USUARIOS
-            String sqlUsuario = "INSERT INTO usuario (id_rol, nombre, email, pass_hash, pass_salt, isActivo) VALUES " +
+            String sqlUsuario = "INSERT INTO usuario (id_rol, nombre, email, pass_hash, pass_salt, activo) VALUES " +
                     "(?, ?, ?, ?, ?, ?)";
             try (PreparedStatement stmt = conn.prepareStatement(sqlUsuario)) {
                 for (Usuario u : usuarios) {
@@ -143,7 +144,8 @@ public class ImportadorBBDD {
             //10. INSERTAR INCIDENCIAS
             String sqlIncidencias = "INSERT INTO incidencia (codigo, id_creador, id_espacio, id_categoria, id_prioridad, id_estado, id_tecnico," +
                     "                        id_proveedor, descripcion, imagen, riesgo_personas, impide_uso, fecha_creacion," +
-                    "                        fecha_objetivo, fecha_resolucion, facturada, version) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    "                        fecha_objetivo, fecha_resolucion, facturada, version) values (?, ?, ?, " +
+                    "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             try (PreparedStatement stmt = conn.prepareStatement(sqlIncidencias)) {
                 for (Incidencia i : incidencias) {
                     stmt.setString(1, i.getCodigo());
@@ -152,8 +154,17 @@ public class ImportadorBBDD {
                     stmt.setInt(4, i.getId_categoria());
                     stmt.setInt(5, i.getId_prioridad());
                     stmt.setInt(6, i.getId_estado());
-                    stmt.setInt(7, i.getId_tecnico());
-                    stmt.setInt(8, i.getId_proveedor());
+                    if (i.getId_tecnico() != null && i.getId_tecnico() > 0) {
+                        stmt.setInt(7, i.getId_tecnico());
+                    } else {
+                        stmt.setNull(7, java.sql.Types.INTEGER);
+                    }
+
+                    if (i.getId_proveedor() != null && i.getId_proveedor() > 0) {
+                        stmt.setInt(8, i.getId_proveedor());
+                    } else {
+                        stmt.setNull(8, java.sql.Types.INTEGER);
+                    }
                     stmt.setString(9, i.getDescripcion());
                     stmt.setString(10, i.getImagen());
                     stmt.setBoolean(11, i.isRiesgo_personas());
@@ -229,7 +240,7 @@ public class ImportadorBBDD {
             return true;
 
         } catch (Exception e) {
-            // 6. SI ALGO FALLA -> DESHACER TODO (ROLLBACK)
+            // 6. SI ALGO FALLA -> DESHACER EL (ROLLBACK)
             System.err.println("❌ Error durante la importación. Realizando ROLLBACK: " + e.getMessage());
 
             if (conn != null) {

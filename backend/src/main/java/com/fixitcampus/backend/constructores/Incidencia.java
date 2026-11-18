@@ -1,4 +1,4 @@
-package com.fixitcampus.backend;
+package com.fixitcampus.backend.constructores;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

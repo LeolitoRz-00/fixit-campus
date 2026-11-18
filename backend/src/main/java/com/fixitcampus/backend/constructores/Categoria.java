@@ -1,17 +1,17 @@
-package com.fixitcampus.backend;
+package com.fixitcampus.backend.constructores;
 
-public class Edificio {
+public class Categoria {
 
     String nombre;
 
-    public Edificio(String nombre) {
+    public Categoria(String nombre) {
 
         this.nombre = nombre;
     }
 
     @Override
     public String toString() {
-        return "\nEdificio{" +
+        return "\nCategoria{" +
                 "nombre='" + nombre +
                 '}';
     }

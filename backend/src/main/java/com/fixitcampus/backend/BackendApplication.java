@@ -16,11 +16,19 @@ public class BackendApplication {
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 		EstructuraCarpetas.crearEstructura();
-		//CrearExcel.crearExcel();
-		LeerExcel.leerExcel();
+		CrearExcel.crearExcel();
+
+
 		//SpringApplication.run(BackendApplication.class, args);
 
-        //
+            //Escritor de errores
+            ColaLogs colaErrores = new ColaLogs();
+            LogWriter escritor_error = new LogWriter("EscritorError", colaErrores, "logs_error.txt");
+            escritor_error.start();
+            LeerExcel.leerExcel(colaErrores);
+            GeneradorInformeWord.generarInforme();
+
+
         ColaLogs cola = new ColaLogs();
         LogWriter escritor = new LogWriter("Escritor",cola, "logs.txt");
         LogWriter chismosito = new LogWriter("Chismosito",cola, "logs.txt");
@@ -48,7 +56,9 @@ public class BackendApplication {
 
         chismosito.interrupt();
         escritor.interrupt();
+        escritor_error.interrupt();
         escritor.join(); // ACA EL MAIN ESPERA AL LogWriter ANTES DE CONTINUAR CON EL PROGRAMA
+        escritor_error.join();
         System.out.println("Estado al final: " + escritor.getState());
 	}
 }
