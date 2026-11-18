@@ -1,4 +1,4 @@
-package com.fixitcampus.backend;
+package com.fixitcampus.backend.constructores;
 
 public class TipoEspacio {
 
@@ -14,5 +14,9 @@ public class TipoEspacio {
         return "\nTipo Espacio{" +
                 "nombre='" + nombre +
                 '}';
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 }

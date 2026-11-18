@@ -1,0 +1,2 @@
+LogMessage -> [SISTEMA] Importación completada con éxito desde Excel (1795031219231)
+LogMessage -> [ERROR] Fallo en importación. Rollback aplicado: Duplicate entry 'USUARIO' for key 'uq_rol_nombre' (1795031225902)

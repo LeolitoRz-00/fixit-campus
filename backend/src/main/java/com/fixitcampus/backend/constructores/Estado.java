@@ -1,4 +1,4 @@
-package com.fixitcampus.backend;
+package com.fixitcampus.backend.constructores;
 
 public class Estado {
 
@@ -17,5 +17,13 @@ public class Estado {
                 "nombre='" + nombre +
                 ", orden=" + orden +
                 '}';
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getOrden() {
+        return orden;
     }
 }

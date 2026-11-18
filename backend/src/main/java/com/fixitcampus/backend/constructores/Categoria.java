@@ -1,4 +1,4 @@
-package com.fixitcampus.backend;
+package com.fixitcampus.backend.constructores;
 
 public class Categoria {
 
@@ -14,5 +14,9 @@ public class Categoria {
         return "\nCategoria{" +
                 "nombre='" + nombre +
                 '}';
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 }

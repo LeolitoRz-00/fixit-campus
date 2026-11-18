@@ -1,4 +1,4 @@
-package com.fixitcampus.backend;
+package com.fixitcampus.backend.constructores;
 
 public class Prioridad {
 
@@ -17,5 +17,13 @@ public class Prioridad {
                 "nombre='" + nombre +
                 "plazo_laborables=" + plazo_dias_laborables +
                 '}';
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getPlazo_dias_laborables() {
+        return plazo_dias_laborables;
     }
 }

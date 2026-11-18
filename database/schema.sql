@@ -1,8 +1,5 @@
 -- =====================================================================
--- FixIt Campus - schema.sql
--- Motor: MariaDB 10.5+ (los CHECK se aplican desde la 10.2.1)
--- Uso:   mariadb -u root -p < database/schema.sql
--- Es repetible: borra y recrea la base de datos completa.
+-- FixIt Campus - schema.sql (Versión limpia)
 -- =====================================================================
 
 DROP DATABASE IF EXISTS fixit_campus;
@@ -35,8 +32,7 @@ CREATE TABLE prioridad (
   nombre                VARCHAR(30)  NOT NULL,
   plazo_dias_laborables INT          NOT NULL,
   CONSTRAINT pk_prioridad PRIMARY KEY (id_prioridad),
-  CONSTRAINT uq_prioridad_nombre UNIQUE (nombre),
-  CONSTRAINT ck_prioridad_plazo CHECK (plazo_dias_laborables >= 0)
+  CONSTRAINT uq_prioridad_nombre UNIQUE (nombre)
 ) ENGINE=InnoDB;
 
 CREATE TABLE categoria (
@@ -90,16 +86,15 @@ CREATE TABLE espacio (
 ) ENGINE=InnoDB;
 
 CREATE TABLE proveedor (
-  id_proveedor  INT            NOT NULL AUTO_INCREMENT,
-  nif           VARCHAR(15)    NOT NULL,
-  razon_social  VARCHAR(150)   NOT NULL,
-  especialidad  VARCHAR(50)    NOT NULL,
-  contacto      VARCHAR(150)   NULL,
-  precio_hora   DECIMAL(8,2)   NOT NULL,
-  activo        BOOLEAN        NOT NULL DEFAULT TRUE,
+  id_proveedor  INT             NOT NULL AUTO_INCREMENT,
+  nif           VARCHAR(15)     NOT NULL,
+  razon_social  VARCHAR(150)    NOT NULL,
+  especialidad  VARCHAR(50)     NOT NULL,
+  contacto      VARCHAR(150)    NULL,
+  precio_hora   DECIMAL(8,2)    NOT NULL,
+  activo        BOOLEAN         NOT NULL DEFAULT TRUE,
   CONSTRAINT pk_proveedor PRIMARY KEY (id_proveedor),
-  CONSTRAINT uq_proveedor_nif UNIQUE (nif),
-  CONSTRAINT ck_proveedor_precio CHECK (precio_hora >= 0)
+  CONSTRAINT uq_proveedor_nif UNIQUE (nif)
 ) ENGINE=InnoDB;
 
 -- ---------------------------------------------------------------------
@@ -132,11 +127,7 @@ CREATE TABLE incidencia (
   CONSTRAINT fk_incidencia_prioridad FOREIGN KEY (id_prioridad) REFERENCES prioridad (id_prioridad),
   CONSTRAINT fk_incidencia_estado    FOREIGN KEY (id_estado)    REFERENCES estado (id_estado),
   CONSTRAINT fk_incidencia_tecnico   FOREIGN KEY (id_tecnico)   REFERENCES usuario (id_usuario),
-  CONSTRAINT fk_incidencia_proveedor FOREIGN KEY (id_proveedor) REFERENCES proveedor (id_proveedor),
-  CONSTRAINT ck_incidencia_asignacion
-    CHECK (id_tecnico IS NULL OR id_proveedor IS NULL),
-  CONSTRAINT ck_incidencia_descripcion
-    CHECK (CHAR_LENGTH(TRIM(descripcion)) > 0)
+  CONSTRAINT fk_incidencia_proveedor FOREIGN KEY (id_proveedor) REFERENCES proveedor (id_proveedor)
 ) ENGINE=InnoDB;
 
 CREATE INDEX idx_incidencia_estado    ON incidencia (id_estado);
@@ -159,8 +150,7 @@ CREATE TABLE comentario (
   fecha          DATETIME       NOT NULL DEFAULT CURRENT_TIMESTAMP,
   CONSTRAINT pk_comentario PRIMARY KEY (id_comentario),
   CONSTRAINT fk_comentario_incidencia FOREIGN KEY (id_incidencia) REFERENCES incidencia (id_incidencia),
-  CONSTRAINT fk_comentario_autor FOREIGN KEY (id_autor) REFERENCES usuario (id_usuario),
-  CONSTRAINT ck_comentario_texto CHECK (CHAR_LENGTH(TRIM(texto)) > 0)
+  CONSTRAINT fk_comentario_autor FOREIGN KEY (id_autor) REFERENCES usuario (id_usuario)
 ) ENGINE=InnoDB;
 
 CREATE INDEX idx_comentario_incidencia ON comentario (id_incidencia);
@@ -175,8 +165,7 @@ CREATE TABLE historial_cambio (
   fecha                DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP,
   CONSTRAINT pk_historial_cambio PRIMARY KEY (id_historial_cambio),
   CONSTRAINT fk_historial_incidencia FOREIGN KEY (id_incidencia) REFERENCES incidencia (id_incidencia),
-  CONSTRAINT fk_historial_usuario FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario),
-  CONSTRAINT ck_historial_tipo CHECK (tipo IN ('ESTADO', 'PRIORIDAD', 'ASIGNACION'))
+  CONSTRAINT fk_historial_usuario FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)
 ) ENGINE=InnoDB;
 
 CREATE INDEX idx_historial_incidencia ON historial_cambio (id_incidencia);

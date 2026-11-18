@@ -1,4 +1,4 @@
-package com.fixitcampus.backend;
+package com.fixitcampus.backend.constructores;
 
 public class Rol {
 
@@ -14,5 +14,9 @@ public class Rol {
         return "\nRol{" +
                 "nombre='" + nombre + 
                 '}';
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 }

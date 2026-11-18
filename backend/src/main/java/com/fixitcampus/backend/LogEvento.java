@@ -31,4 +31,24 @@ public class LogEvento {
                 ", fecha=" + fecha +
                 '}';
     }
+
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    public String getAccion() {
+        return accion;
+    }
+
+    public String getEntidad() {
+        return entidad;
+    }
+
+    public String getDetalle() {
+        return detalle;
+    }
+
+    public LocalDateTime getFecha() {
+        return fecha;
+    }
 }

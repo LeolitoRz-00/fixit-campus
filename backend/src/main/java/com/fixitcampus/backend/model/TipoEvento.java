@@ -7,5 +7,6 @@ public class TipoEvento {
     public static final String INCIDENCIA = "INCIDENCIA";
     public static final String FACTURA = "FACTURA";
     public static final String ERROR = "ERROR";
+    public static final String SISTEMA = "SISTEMA";
 
 }

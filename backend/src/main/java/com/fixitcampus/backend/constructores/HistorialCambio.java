@@ -1,6 +1,5 @@
-package com.fixitcampus.backend;
+package com.fixitcampus.backend.constructores;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class HistorialCambio {
@@ -34,5 +33,29 @@ public class HistorialCambio {
                 ", valor_nuevo='" + valor_nuevo +
                 ", fecha=" + fecha +
                 '}';
+    }
+
+    public int getId_incidencia() {
+        return id_incidencia;
+    }
+
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public String getValor_anterior() {
+        return valor_anterior;
+    }
+
+    public String getValor_nuevo() {
+        return valor_nuevo;
+    }
+
+    public LocalDateTime getFecha() {
+        return fecha;
     }
 }

@@ -1,4 +1,4 @@
-package com.fixitcampus.backend;
+package com.fixitcampus.backend.constructores;
 
 public class Edificio {
 
@@ -14,5 +14,9 @@ public class Edificio {
         return "\nEdificio{" +
                 "nombre='" + nombre +
                 '}';
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 }
