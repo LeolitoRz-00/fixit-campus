@@ -1,8 +1,9 @@
-package com.fixitcampus.backend;
+package com.fixitcampus.backend.service;
 
 import com.fixitcampus.backend.conexion.ImportadorBBDD;
 import com.fixitcampus.backend.constructores.*;
 import com.fixitcampus.backend.logger.ColaLogs;
+import com.fixitcampus.backend.logger.LogEvento;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 

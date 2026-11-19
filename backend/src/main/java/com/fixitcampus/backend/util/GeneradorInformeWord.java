@@ -1,4 +1,4 @@
-package com.fixitcampus.backend;
+package com.fixitcampus.backend.util;
 
 import com.fixitcampus.backend.conexion.ConexionBBDD;
 import org.apache.poi.xwpf.usermodel.*;

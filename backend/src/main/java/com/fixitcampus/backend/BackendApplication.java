@@ -1,15 +1,10 @@
 package com.fixitcampus.backend;
 
-import com.fixitcampus.backend.conexion.ConexionBBDD;
-import com.fixitcampus.backend.conexion.ImportadorBBDD;
-import com.fixitcampus.backend.demo.DemoHilos;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import com.fixitcampus.backend.logger.ColaLogs;
-import com.fixitcampus.backend.logger.LogWriter;
-import com.fixitcampus.backend.model.LogMessage;
-import com.fixitcampus.backend.model.TipoEvento;
 
+import com.fixitcampus.backend.demo.DemoHilos;
+import com.fixitcampus.backend.util.CrearExcel;
+import com.fixitcampus.backend.util.EstructuraCarpetas;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.io.IOException;
 
 @SpringBootApplication

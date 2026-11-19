@@ -1,4 +1,4 @@
-package com.fixitcampus.backend;
+package com.fixitcampus.backend.logger;
 
 import java.time.LocalDateTime;
 

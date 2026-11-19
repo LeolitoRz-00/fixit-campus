@@ -1,8 +1,8 @@
 package com.fixitcampus.backend.conexion;
 
-import com.fixitcampus.backend.*;
 import com.fixitcampus.backend.constructores.*;
 import com.fixitcampus.backend.logger.ColaLogs;
+import com.fixitcampus.backend.logger.LogEvento;
 import com.fixitcampus.backend.model.LogMessage;
 import com.fixitcampus.backend.model.TipoEvento;
 
