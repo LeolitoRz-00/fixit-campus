@@ -1,0 +1,4 @@
+LogMessage -> [ERROR] Fallo de sincronización con Odoo (intento 1) (19/11/2026 10:31:10)
+LogMessage -> [ERROR] Fallo de sincronización con Odoo (intento 2) (19/11/2026 10:31:10)
+LogMessage -> [ERROR] Fallo de sincronización con Odoo (intento 3) (19/11/2026 10:31:11)
+LogMessage -> [ERROR] Fallo en importación. Rollback aplicado: Public Key Retrieval is not allowed (19/11/2026 10:31:12)

@@ -9,6 +9,7 @@ public class ColaLogs {
     // LA IDEA DE QUE SEA UN ARRAY ES QUE SEA COMO UNA BANDEJA DE ENTRADA
     // DONDE SE GUARDARAN LOS MENSAJES QUE NO SE HAN ESCRITO
     private ArrayList<LogMessage> mensajes = new ArrayList<>();
+    private int totalAgregados = 0;
 
     // SE USA synchronized PARA QUE SOLO 1 HILO ACCEDA A LA VEZ
     // SE QUEDA ESPERANDO HASTA QUE TERMINE DE ESCRIBIR Y PASA OTRO
@@ -16,6 +17,7 @@ public class ColaLogs {
 
         // ENTRA EL MENSAJE A NUESTRA "BANDEJA DE ENTRADA"
         mensajes.add(mensaje);
+        totalAgregados++;
         notify(); // PARA AVISAR AL HILO QUE ALGO HA LLEGADO
     }
 
@@ -33,5 +35,9 @@ public class ColaLogs {
 
     public synchronized int pendientes() {
         return mensajes.size(); // REVISA CUANTOS MENSAJES QUEDAN POR ESCRIBIR
+    }
+
+    public synchronized int getTotalAgregados() {
+        return totalAgregados;
     }
 }
