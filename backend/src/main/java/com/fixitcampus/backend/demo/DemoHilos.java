@@ -1,7 +1,7 @@
 package com.fixitcampus.backend.demo;
 
-import com.fixitcampus.backend.GeneradorInformeWord;
-import com.fixitcampus.backend.LeerExcel;
+import com.fixitcampus.backend.util.GeneradorInformeWord;
+import com.fixitcampus.backend.service.LeerExcel;
 import com.fixitcampus.backend.logger.ColaLogs;
 import com.fixitcampus.backend.logger.LogWriter;
 import com.fixitcampus.backend.model.LogMessage;
